@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.ilyaslabs.foodstack</groupId>
+        <artifactId>microservice-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>io.github.ilyaslabs.foodstack.authservice</groupId>
+    <artifactId>authservice-parent</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <name>authservice-parent</name>
+    <description>Authentication microservice</description>
+
+    <properties>
+        <revision>0.0.1-SNAPSHOT</revision>
+    </properties>
+    <modules>
+        <module>auth-service-web</module>
+        <module>auth-service-api</module>
+        <module>auth-service-client</module>
+        <module>auth-client</module>
+        <module>test-common</module>
+        <module>security-common</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.github.ilyaslabs.foodstack.authservice</groupId>
+                <artifactId>auth-service-client</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.ilyaslabs.foodstack.authservice</groupId>
+                <artifactId>auth-client</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.ilyaslabs.foodstack.authservice</groupId>
+                <artifactId>auth-service-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.ilyaslabs.foodstack.authservice</groupId>
+                <artifactId>test-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.ilyaslabs.foodstack.authservice</groupId>
+                <artifactId>security-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
