@@ -111,14 +111,14 @@ class AuthV1Controller implements AuthApiV1 {
         );
 
         String token = authService.generateToken(
-                user.getUsername(),
+                user.getId().toHexString(),
                 authConfig.getIssuer(),
                 claims,
                 scopes
         );
 
         String refreshToken = authService.generateRefreshToken(
-                user.getUsername(),
+                user.getId().toHexString(),
                 authConfig.getIssuer(),
                 null,
                 null

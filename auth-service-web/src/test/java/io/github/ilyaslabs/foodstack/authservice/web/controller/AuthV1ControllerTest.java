@@ -98,7 +98,7 @@ class AuthV1ControllerTest extends BaseTest {
 
         JWTClaimsSet jwtClaimsSet = jwt.getJWTClaimsSet();
 
-        assertThat(jwtClaimsSet.getSubject()).isEqualTo("admin");
+        assertThat(jwtClaimsSet.getSubject()).isEqualTo(UserTestDataHandler.ADMIN_USER_ID.toHexString());
         assertThat(jwtClaimsSet.getIssuer()).isEqualTo(authConfig.getIssuer());
 
         assertThat(jwtClaimsSet.getClaim(CommonSecurityConfig.JWT_CLAIM_USER_ID)).isEqualTo(UserTestDataHandler.ADMIN_USER_ID.toHexString());
@@ -262,7 +262,7 @@ class AuthV1ControllerTest extends BaseTest {
     @Test
     void testRefreshTokenFailedWhenNoJwtTokenIsProvided() throws Exception {
         mockMvc.perform(post("/api/v1/refresh"))
-                .andExpect(status().isForbidden());
+                .andExpect(status().isUnauthorized());
     }
 
     @Test

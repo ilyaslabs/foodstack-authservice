@@ -11,7 +11,7 @@ import java.time.ZoneId;
  *
  * @author Muhammad Ilyas (m.ilyas@live.com)
  */
-@TestConfiguration
+@TestConfiguration(proxyBeanMethods = false)
 public class FixedClockConfiguration {
 
     @Bean

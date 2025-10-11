@@ -56,4 +56,14 @@ io:
 
 auth:
   issuer: http://foodstack.authservice.com
+  doc:
+    enabled: true
+  actuator:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
