@@ -1,4 +1,4 @@
-package io.github.ilyaslabs.foodstack.authservice.api.v1.model;
+package io.github.ilyaslabs.foodstack.authservice.api.v1.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;

@@ -22,17 +22,19 @@ public class AutoConfig {
 
     /**
      * RestClient bean for {@link AuthApiV1} making http calls
+     * @param restClient auth service rest client
+     * @param authConfig auth service configuration
+     *
+     * @return AuthApiV1 client
      */
     @Bean
-    AuthApiV1 authApiV1Client(AuthConfig authConfig) {
+    AuthApiV1 authApiV1Client(RestClient restClient, AuthConfig authConfig) {
         log.info("Initializing AuthApiV1 RestClient with baseUrl: {}", authConfig.getBaseUrl());
 
-        RestClient restClient = RestClient.builder()
-                .baseUrl(authConfig.getBaseUrl())
-                .build();
+        var apiRestClient = restClient.mutate().baseUrl(authConfig.getBaseUrl()).build();
 
         HttpServiceProxyFactory factory = HttpServiceProxyFactory
-                .builderFor(RestClientAdapter.create(restClient))
+                .builderFor(RestClientAdapter.create(apiRestClient))
                 .build();
 
         log.info("AuthApiV1 RestClient has been initialized");

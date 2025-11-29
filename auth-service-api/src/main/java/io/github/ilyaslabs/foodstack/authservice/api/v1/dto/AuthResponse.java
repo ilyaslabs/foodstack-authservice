@@ -1,4 +1,4 @@
-package io.github.ilyaslabs.foodstack.authservice.authclient;
+package io.github.ilyaslabs.foodstack.authservice.api.v1.dto;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
-class AuthResponse {
+public class AuthResponse {
 
     private String token;
     private String refreshToken;
@@ -24,5 +24,8 @@ class AuthResponse {
      */
     private Long expiresIn;
 
+    /**
+     * refresh token expiration time in seconds
+     */
     private Long refreshTokenExpiresIn;
 }

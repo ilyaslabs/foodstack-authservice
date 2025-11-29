@@ -2,11 +2,9 @@ package io.github.ilyaslabs.foodstack.authservice.web.controller;
 
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import io.github.ilyaslabs.foodstack.authservice.api.v1.model.AuthRequest;
-import io.github.ilyaslabs.foodstack.authservice.api.v1.model.AuthResponse;
+import io.github.ilyaslabs.foodstack.authservice.api.v1.dto.AuthRequest;
+import io.github.ilyaslabs.foodstack.authservice.api.v1.dto.AuthResponse;
 import io.github.ilyaslabs.foodstack.authservice.security.common.CommonSecurityConfig;
-import io.github.ilyaslabs.foodstack.authservice.test.FixedClockConfiguration;
-import io.github.ilyaslabs.foodstack.authservice.test.MutableClock;
 import io.github.ilyaslabs.foodstack.authservice.web.BaseTest;
 import io.github.ilyaslabs.foodstack.authservice.web.UserTestDataHandler;
 import io.github.ilyaslabs.foodstack.authservice.web.config.AuthConfig;
@@ -15,12 +13,12 @@ import io.github.ilyaslabs.foodstack.authservice.web.repository.UserRepository;
 import io.github.ilyaslabs.microservice.exception.HttpResponseException;
 import io.github.ilyaslabs.microservice.security.jwt.AuthService;
 import io.github.ilyaslabs.microservice.security.jwt.JwtProperties;
+import io.github.ilyaslabs.microservice.test.common.MutableClock;
 import org.assertj.core.data.MapEntry;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,7 +36,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Muhammad Ilyas (m.ilyas@live.com)
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@Import(FixedClockConfiguration.class)
 class AuthV1ControllerTest extends BaseTest {
 
     @Autowired
@@ -59,7 +56,6 @@ class AuthV1ControllerTest extends BaseTest {
 
     @BeforeAll
     void setUp() {
-
         userTestDataHandler.clearAllUsers();
         userTestDataHandler.setupData();
     }

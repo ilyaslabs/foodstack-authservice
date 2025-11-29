@@ -1,8 +1,8 @@
 package io.github.ilyaslabs.foodstack.authservice.api.v1;
 
 import io.github.ilyaslabs.foodstack.authservice.api.Constants;
-import io.github.ilyaslabs.foodstack.authservice.api.v1.model.AuthRequest;
-import io.github.ilyaslabs.foodstack.authservice.api.v1.model.AuthResponse;
+import io.github.ilyaslabs.foodstack.authservice.api.v1.dto.AuthRequest;
+import io.github.ilyaslabs.foodstack.authservice.api.v1.dto.AuthResponse;
 import org.springframework.web.service.annotation.HttpExchange;
 import org.springframework.web.service.annotation.PostExchange;
 

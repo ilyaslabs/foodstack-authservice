@@ -1,8 +1,8 @@
 package io.github.ilyaslabs.foodstack.authservice.web.controller;
 
 import io.github.ilyaslabs.foodstack.authservice.api.v1.AuthApiV1;
-import io.github.ilyaslabs.foodstack.authservice.api.v1.model.AuthRequest;
-import io.github.ilyaslabs.foodstack.authservice.api.v1.model.AuthResponse;
+import io.github.ilyaslabs.foodstack.authservice.api.v1.dto.AuthRequest;
+import io.github.ilyaslabs.foodstack.authservice.api.v1.dto.AuthResponse;
 import io.github.ilyaslabs.foodstack.authservice.security.common.CommonSecurityConfig;
 import io.github.ilyaslabs.foodstack.authservice.web.config.AuthConfig;
 import io.github.ilyaslabs.foodstack.authservice.web.db.document.User;
