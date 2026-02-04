@@ -3,8 +3,8 @@ package io.github.ilyaslabs.foodstack.authservice.web;
 import io.github.ilyaslabs.microservice.test.common.FixedClockConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.testcontainers.context.ImportTestcontainers;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 import tools.jackson.databind.ObjectMapper;
 
@@ -13,7 +13,7 @@ import tools.jackson.databind.ObjectMapper;
  * @author Muhammad Ilyas (m.ilyas@live.com)
  */
 @SpringBootTest(classes = {Config.class, FixedClockConfiguration.class})
-@ImportTestcontainers(TestContainersConfiguration.class)
+@Import(TestContainersConfiguration.class)
 @AutoConfigureMockMvc
 public abstract class BaseTest {
 

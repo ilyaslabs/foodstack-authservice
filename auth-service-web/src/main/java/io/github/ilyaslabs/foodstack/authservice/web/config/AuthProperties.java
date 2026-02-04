@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @Data
 @ConfigurationProperties("auth")
-public class AuthConfig {
+public class AuthProperties {
 
     private String issuer;
 }

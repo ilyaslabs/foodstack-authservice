@@ -16,15 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -73,10 +65,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.ilyaslabs</groupId>
-            <artifactId>spring-boot-microservice-security-jwt</artifactId>
-        </dependency>
-        <dependency>
             <groupId>io.github.ilyaslabs.foodstack.authservice</groupId>
             <artifactId>auth-service-api</artifactId>
         </dependency>
@@ -87,12 +75,25 @@
         </dependency>
         <dependency>
             <groupId>io.github.ilyaslabs</groupId>
+            <artifactId>security-guard</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-contract-verifier</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.ilyaslabs</groupId>
             <artifactId>spring-boot-microservice-test-common</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.ilyaslabs.foodstack.authservice</groupId>
-            <artifactId>security-common</artifactId>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>spring-mock-mvc</artifactId>
         </dependency>
     </dependencies>
 
@@ -112,6 +113,15 @@
                             <artifactId>lombok</artifactId>
                         </path>
                     </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <testFramework>JUNIT5</testFramework>
+                    <baseClassForTests>io.github.ilyaslabs.foodstack.authservice.web.BaseContractsTest</baseClassForTests>
                 </configuration>
             </plugin>
             <plugin>

@@ -1,9 +1,9 @@
 spring:
   application:
     name: auth-service
+#  it disabled config server
   config:
-    import: "configserver:http://localhost:7777"
-  cloud:
-    config:
-      username: ${CONFIG_USER}
-      password: ${CONFIG_PASSWORD}
+    import: "optional:configserver:"
+#  it enabled config server and import config from config server
+#  config:
+#    import: "configserver:http://localhost:7777"

@@ -1,0 +1,22 @@
+description: Successful authentication
+
+request:
+  method: POST
+  url: /api/v1/authenticate
+  body:
+    username: admin@domain.com
+    password: 123456789
+  headers:
+    Content-Type: application/json
+
+response:
+  status: 200
+  headers:
+    Content-Type: application/json
+  body:
+    token: jwt token
+    refreshToken: jwt refresh token
+    scopes:
+      - ADMIN
+    userId: 697e60723f73509d5143f6ef
+    username: Admin

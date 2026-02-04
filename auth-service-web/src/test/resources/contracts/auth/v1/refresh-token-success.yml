@@ -1,0 +1,19 @@
+description: Refresh token success
+
+request:
+  method: POST
+  url: /api/v1/refresh
+  headers:
+    X-USER-ID: 697e60723f73509d5143f6ef
+    X-SCOPES: REFRESH_TOKEN
+    Content-Type: application/json
+
+response:
+  status: 200
+  body:
+    token: jwt token
+    refreshToken: jwt refresh token
+    scopes:
+      - ADMIN
+    userId: 697e60723f73509d5143f6ef
+    username: Admin

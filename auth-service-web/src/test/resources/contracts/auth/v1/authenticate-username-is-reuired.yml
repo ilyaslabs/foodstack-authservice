@@ -1,0 +1,20 @@
+description: Successful authentication
+
+request:
+  method: POST
+  url: /api/v1/authenticate
+  body:
+    username:
+    password:
+  headers:
+    Content-Type: application/json
+
+response:
+  status: 400
+  headers:
+    Content-Type: application/problem+json
+  body:
+    message: Validation failed
+    fields:
+      username: Username is required
+      password: Password is required

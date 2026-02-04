@@ -24,26 +24,29 @@
     <modules>
         <module>auth-service-web</module>
         <module>auth-service-api</module>
-        <module>auth-service-client</module>
-        <module>security-common</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.github.ilyaslabs.foodstack.authservice</groupId>
-                <artifactId>auth-service-client</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.ilyaslabs.foodstack.authservice</groupId>
                 <artifactId>auth-service-api</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ilyaslabs.foodstack.authservice</groupId>
-                <artifactId>security-common</artifactId>
-                <version>${revision}</version>
+                <groupId>io.github.ilyaslabs</groupId>
+                <artifactId>security-guard</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.ilyaslabs</groupId>
+                <artifactId>spring-boot-microservice-test-common</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>spring-mock-mvc</artifactId>
+                <version>6.0.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

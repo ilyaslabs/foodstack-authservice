@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
 @Import({TestContainersConfiguration.class})
-@SpringBootTest(classes = FixedClockConfiguration.class)
+@SpringBootTest(classes = {FixedClockConfiguration.class, Config.class})
 class AuthserviceApplicationTests {
 
 	@Test

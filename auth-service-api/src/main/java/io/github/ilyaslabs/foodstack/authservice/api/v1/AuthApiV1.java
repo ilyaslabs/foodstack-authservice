@@ -3,6 +3,7 @@ package io.github.ilyaslabs.foodstack.authservice.api.v1;
 import io.github.ilyaslabs.foodstack.authservice.api.Constants;
 import io.github.ilyaslabs.foodstack.authservice.api.v1.dto.AuthRequest;
 import io.github.ilyaslabs.foodstack.authservice.api.v1.dto.AuthResponse;
+import io.github.ilyaslabs.microservice.security.guard.model.AuthenticationContext;
 import org.springframework.web.service.annotation.HttpExchange;
 import org.springframework.web.service.annotation.PostExchange;
 
@@ -31,5 +32,5 @@ public interface AuthApiV1 {
      *         updated token expiration time, and refresh token expiration time
      */
     @PostExchange( "/refresh")
-    AuthResponse refreshToken();
+    AuthResponse refreshToken(AuthenticationContext authenticationContext);
 }
