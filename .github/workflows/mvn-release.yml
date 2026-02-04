@@ -6,7 +6,7 @@ on:
 
 jobs:
   release:
-    uses: ilyaslabs/foodstack-cicd/.github/workflows/release.yml@main
+    uses: ilyaslabs/cicd/.github/workflows/mvn-release.yml@main
     secrets:
       OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
       OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
