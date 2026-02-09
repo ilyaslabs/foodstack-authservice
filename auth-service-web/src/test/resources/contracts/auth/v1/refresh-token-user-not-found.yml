@@ -1,0 +1,18 @@
+description: Test refresh token with user not found
+
+request:
+  method: POST
+  url: /api/v1/refresh
+  headers:
+    X-USER-ID: 6988f8a8aa0312189862bd5f
+    X-SCOPES: REFRESH_TOKEN
+    Content-Type: application/json
+
+response:
+  status: 404
+  headers:
+    Content-Type: application/problem+json
+  body:
+    message: Not found
+    fields:
+      username: User not found

@@ -1,0 +1,19 @@
+description: Test when user is disabled expect error response
+
+request:
+  method: POST
+  url: /api/v1/authenticate
+  body:
+    username: admin-disabled@domain.com
+    password: admin123456
+  headers:
+    Content-Type: application/json
+
+response:
+  status: 404
+  headers:
+    Content-Type: application/problem+json
+  body:
+    message: Not found
+    fields:
+      username: User not found

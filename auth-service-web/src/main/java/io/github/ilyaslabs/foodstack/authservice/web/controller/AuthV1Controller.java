@@ -9,13 +9,12 @@ import io.github.ilyaslabs.foodstack.authservice.web.db.document.User;
 import io.github.ilyaslabs.foodstack.authservice.web.repository.UserRepository;
 import io.github.ilyaslabs.foodstack.authservice.web.service.AuthService;
 import io.github.ilyaslabs.microservice.exception.HttpResponseException;
-import io.github.ilyaslabs.microservice.security.guard.model.AuthenticationContext;
+import io.github.ilyaslabs.microservice.security.guard.AuthenticationContextProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +37,8 @@ class AuthV1Controller implements AuthApiV1 {
     private final PasswordEncoder passwordEncoder;
     private final AuthProperties authProperties;
     private final JwtProperties jwtProperties;
+
+    private final AuthenticationContextProvider authenticationContextProvider;
 
     /**
      * {@inheritDoc}
@@ -63,9 +64,9 @@ class AuthV1Controller implements AuthApiV1 {
      */
     @Override
     @PreAuthorize("hasAuthority('" + AuthService.SCOPE_REFRESH_TOKEN + "')")
-    public AuthResponse refreshToken(@AuthenticationPrincipal AuthenticationContext authenticationContext) {
+    public AuthResponse refreshToken() {
 
-        ObjectId userId = authenticationContext.userId();
+        ObjectId userId = authenticationContextProvider.current().userId();
         User user = userRepository.findById(userId)
                 .filter(u -> Boolean.TRUE.equals(u.getEnabled()) && u.getDeletedAt() == null)
                 .orElseThrow(() -> HttpResponseException.of(HttpStatus.NOT_FOUND, "Not found", Map.of("username", "User not found")));

@@ -44,6 +44,8 @@ public class BaseContractsTest {
     AuthService authService;
 
     private final String ADMIN_USER_ID = "697e60723f73509d5143f6ef";
+    private final String ADMIN_USER_ID_NOT_FOUND = "6988f8a8aa0312189862bd5f";
+    private final String ADMIN_USER_ID_DISABLED = "6988fa837f3b94f86d5cb4d7";
 
     @BeforeEach
     void setup() {
@@ -59,8 +61,11 @@ public class BaseContractsTest {
 
     private void stubUserRepository() {
         User adminUser = getAdminUser();
+        User disabledAdminUser = getAdminUserDisabled();
         doReturn(Optional.of(adminUser)).when(userRepository).findByEmail(eq(adminUser.getEmail()));
+        doReturn(Optional.of(disabledAdminUser)).when(userRepository).findByEmail(disabledAdminUser.getEmail());
         doReturn(Optional.of(adminUser)).when(userRepository).findById(eq(adminUser.getId()));
+        doReturn(Optional.empty()).when(userRepository).findById(eq(new ObjectId(ADMIN_USER_ID_NOT_FOUND)));
     }
 
     private @NonNull User getAdminUser() {
@@ -73,6 +78,17 @@ public class BaseContractsTest {
         user.setScopes(List.of(User.Scope.ADMIN));
         user.setCreatedAt(Instant.now());
         user.setUpdatedAt(Instant.now());
+        return user;
+    }
+
+    /**
+     * Returns disabled admin user with alternate email
+     */
+    private @NonNull User getAdminUserDisabled() {
+        User user = getAdminUser();
+        user.setId(new ObjectId(ADMIN_USER_ID_DISABLED));
+        user.setEmail("admin-disabled@domain.com");
+        user.setEnabled(false);
         return user;
     }
 }
