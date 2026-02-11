@@ -120,6 +120,7 @@
                 <artifactId>spring-cloud-contract-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
+                    <classifier>stubs</classifier>
                     <testFramework>JUNIT5</testFramework>
                     <baseClassForTests>io.github.ilyaslabs.foodstack.authservice.web.BaseContractsTest</baseClassForTests>
                 </configuration>
